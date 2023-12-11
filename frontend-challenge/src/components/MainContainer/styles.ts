@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.main`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  padding: 5rem 0;
   margin: 0;
   scroll-behavior: smooth;
   color: ${(props) => props.theme.colors.regular_grey};
-`;
-
-export const Page = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex: 1 1 auto;
 `;

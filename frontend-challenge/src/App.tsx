@@ -1,9 +1,10 @@
 import { MainContainer } from './components/MainContainer';
+import { Modal } from './components/Modal';
 
 function App() {
   return (
     <MainContainer>
-      <h1>hello world!</h1>
+      <Modal />
     </MainContainer>
   );
 }
