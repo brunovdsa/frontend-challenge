@@ -5,7 +5,8 @@ const theme = {
     white: '#FFFFFF',
     dark_grey: '#555555',
     regular_grey: '#848484',
-    light_grey: '#DBDBDB',
+    medium_grey: '#DBDBDB',
+    light_grey: '#E4E4E4',
     lighter_grey: '#F7F7F8',
     blue: '#4DA6B3',
     green: '#5DE290',
@@ -14,26 +15,24 @@ const theme = {
 
   font: {
     font_size: {
-      headline1: '6rem',
-      headline2: '3.75rem',
-      headline3: '3rem',
-      headline4: '2.125rem',
-      headline5: '1.5rem',
-      headline6: '1.25rem',
-      body1: '1rem',
-      body2: '0.875',
+      headline1: '6rem', //96px
+      headline2: '3.75rem', //60px
+      headline3: '3rem', //48px
+      headline4: '2.125rem', //34px
+      headline5: '1.5rem', //24px
+      headline6: '1.25rem', //20px
+      body1: '1rem', //16px
+      body2: '0.875', //10px
     },
     font_weight: {
-      headline1: 400,
-      headline2: 300,
-      headline3: 400,
-      headline4: 700,
-      headline5: 300,
-      headline6: 400,
-      body1: 400,
-      body2: 500,
+      light: 300,
+      regular: 400,
+      medium: 500,
+      bold: 700,
     },
-    font_family: 'roboto',
+    font_family: {
+      roboto: 'Roboto, sans-serif',
+    },
   },
 };
 

@@ -10,6 +10,7 @@ declare module 'styled-components' {
       white: string;
       dark_grey: string;
       regular_grey: string;
+      medium_grey: string;
       light_grey: string;
       lighter_grey: string;
       blue: string;
@@ -29,16 +30,14 @@ declare module 'styled-components' {
         body2: string;
       };
       font_weight: {
-        headline1: number;
-        headline2: number;
-        headline3: number;
-        headline4: number;
-        headline5: number;
-        headline6: number;
-        body1: number;
-        body2: number;
+        light: number;
+        regular: number;
+        medium: number;
+        bold: number;
       };
-      font_family: string;
+      font_family: {
+        roboto: string;
+      };
     };
   }
 }

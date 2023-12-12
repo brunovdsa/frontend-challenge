@@ -10,4 +10,5 @@ export const Container = styled.main`
   margin: 0;
   scroll-behavior: smooth;
   color: ${(props) => props.theme.colors.regular_grey};
+  background-color: ${(props) => props.theme.colors.dark_grey};
 `;
