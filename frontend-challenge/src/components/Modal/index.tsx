@@ -2,6 +2,7 @@ import { Headline2, Headline5 } from '../Typography';
 import { ProgressBar } from '../ProgressBar';
 import { SearchBar } from '../SearchBar';
 import { ManageTaskStatusBtn } from '../ManageTaskStatusBtn';
+import { v4 as uuidv4 } from 'uuid';
 import {
   ContainerModal,
   DateInfo,
@@ -11,10 +12,34 @@ import {
   DateInfoCol1,
   DateInfoCol2,
 } from './styles';
-import { NewTaskInput } from '../NewTaskInput';
+
+import { Form } from '../Form';
+import { useState } from 'react';
 import { TaskList } from '../TaskList';
+import { Task } from '../TaskList/Task';
+
+export interface todoProps {
+  id: string;
+  task: todoProps;
+  completed: boolean;
+  isEditing: boolean;
+}
 
 export function Modal() {
+  const [todos, setTodos] = useState<Array<todoProps>>([]);
+
+  const addTodo = (todo: todoProps) => {
+    setTodos([
+      ...todos,
+      {
+        id: uuidv4(),
+        task: todo,
+        completed: false,
+        isEditing: false,
+      },
+    ]);
+  };
+
   return (
     <ContainerModal>
       <HeaderModal>
@@ -39,12 +64,12 @@ export function Modal() {
         </DateInfoCol2>
       </HeaderModal>
       <BodyModal>
-        <NewTaskInput />
+        <Form addTodo={addTodo} />
         <TaskList>
-          <li>Task 1</li>
-          <li>Task 1</li>
-          <li>Task 1</li>
-          <li>Task 1</li>
+          {todos &&
+            todos.map((todo: todoProps) => {
+              return <Task>{todo.task}</Task>;
+            })}
         </TaskList>
       </BodyModal>
     </ContainerModal>
