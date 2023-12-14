@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const TaskCard = styled.li`
+  .complete {
+    color: red;
+  }
+  .pending {
+    color: blue;
+  }
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +16,7 @@ export const TaskCard = styled.li`
   height: 3rem;
 `;
 
-export const TaskLi = styled.p`
+export const TaskP = styled.p`
   font-size: ${(props) => props.theme.font.font_size.body2};
   color: ${(props) => props.theme.colors.regular_grey};
 

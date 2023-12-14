@@ -5,7 +5,7 @@ import * as Styled from './styles';
 interface BtnFilterTaskStatusProps {
   children: ReactNode;
 
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export function BtnHandleTaskStatus(props: BtnFilterTaskStatusProps) {

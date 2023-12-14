@@ -19,7 +19,7 @@ export interface todoProps {
 export function Modal() {
   const [todos, setTodos] = useState<Array<todoProps>>([]);
   const [filteredTodos, setFilteredTodos] = useState<Array<todoProps>>([]);
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
   const addTodo = (todo: todoProps) => {
     setTodos([
@@ -33,6 +33,7 @@ export function Modal() {
   };
 
   const toggleCompleted = (id: string) => {
+    setIsCompleted(true);
     setTodos(
       todos.map((todo: todoProps) =>
         todo.id === id
@@ -43,7 +44,6 @@ export function Modal() {
           : todo
       )
     );
-    setIsClicked(!isClicked);
   };
 
   const deleteTodo = (id: string) => {
@@ -51,25 +51,35 @@ export function Modal() {
   };
 
   const handleTaskDoneFilter = () => {
-    setIsClicked(!isClicked);
-    if (isClicked) {
+    if (isCompleted) {
       setFilteredTodos(
         todos.filter((todo: todoProps) => todo.completed === true)
       );
+      setIsCompleted(!isCompleted);
     } else {
       setFilteredTodos(todos);
+      setIsCompleted(!isCompleted);
     }
   };
 
   const handleTaskPendingFilter = () => {
-    setIsClicked(!isClicked);
-    if (isClicked) {
+    if (isCompleted) {
       setFilteredTodos(
         todos.filter((todo: todoProps) => todo.completed === false)
       );
+      setIsCompleted(!isCompleted);
     } else {
       setFilteredTodos(todos);
+      setIsCompleted(!isCompleted);
     }
+  };
+
+  const progressBarValue = () => {
+    const todoCompleted = todos.filter((todo) => todo.completed === true);
+    const result: number =
+      todos.length === 0 ? 0 : (todoCompleted.length / todos.length) * 100;
+
+    return result;
   };
 
   return (
@@ -87,7 +97,7 @@ export function Modal() {
         </Styled.DateInfoCol1>
 
         <Styled.DateInfoCol2>
-          <ProgressBar />
+          <ProgressBar value={progressBarValue} />
           <SearchBar />
           <Styled.ManageTaskBtnContainer>
             <BtnFilterTaskStatus onClick={handleTaskDoneFilter}>
@@ -104,7 +114,7 @@ export function Modal() {
         <Styled.TaskListWrapper>
           <TaskList>
             {filteredTodos.length > 0
-              ? filteredTodos.map((todo: todoProps) => {
+              ? filteredTodos.map((todo: todoProps, index: any) => {
                   return (
                     <Task
                       task={todo.task}
