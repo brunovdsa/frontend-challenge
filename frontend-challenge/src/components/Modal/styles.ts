@@ -57,5 +57,10 @@ export const BodyModal = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   gap: 1rem;
+`;
+
+export const TaskListWrapper = styled.div`
+  height: 100%;
 `;

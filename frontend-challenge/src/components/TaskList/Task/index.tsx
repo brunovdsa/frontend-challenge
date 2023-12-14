@@ -1,10 +1,34 @@
-import { ReactNode } from 'react';
-import { TaskCard } from './styles';
+import { useState } from 'react';
+import * as Styled from './styles';
+import { DeleteIcon, DoneIcon } from '../../Icons';
+import { BtnHandleTaskStatus } from '../../BtnHandleTaskStatus';
+import { todoProps } from '../../Modal';
 
 export interface TaskProps {
-  children: ReactNode;
+  task: todoProps;
+  toggleCompleted: () => void;
+  deleteTodo: () => void;
 }
 
 export function Task(props: TaskProps) {
-  return <TaskCard>{props.children}</TaskCard>;
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  return (
+    <Styled.TaskCard onClick={() => setIsActive(!isActive)}>
+      <Styled.TaskLi>{props.task}</Styled.TaskLi>
+
+      {isActive ? (
+        <Styled.TaskButtonsWrapper>
+          <BtnHandleTaskStatus onClick={props.deleteTodo}>
+            <DeleteIcon />
+          </BtnHandleTaskStatus>
+          <BtnHandleTaskStatus onClick={props.toggleCompleted}>
+            <DoneIcon />
+          </BtnHandleTaskStatus>
+        </Styled.TaskButtonsWrapper>
+      ) : (
+        ''
+      )}
+    </Styled.TaskCard>
+  );
 }

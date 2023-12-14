@@ -7,4 +7,8 @@ export const ManageTaskBtn = styled.button`
   border: 1px solid ${(props) => props.theme.colors.medium_grey};
   border-radius: 17px;
   cursor: pointer;
+
+  &:active {
+    color: red;
+  }
 `;
